@@ -12,4 +12,6 @@ export interface IComponentResult {
     listeners?: IListenersDescription[];
 }
 
+export type Component = () => IComponentResult;
+
 export type TPagesPathnames = keyof typeof routes;

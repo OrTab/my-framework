@@ -1,9 +1,9 @@
 import { renderApp } from '../app';
 import { routes } from '../router/appRoutes';
-import { IComponentResult, TPagesPathnames } from '../utilTypes';
+import { Component, IComponentResult, TPagesPathnames } from '../utilTypes';
 
 class RouterService {
-    currentPage: IComponentResult;
+    currentPage: Component;
     constructor() {
         this.currentPage = this.gerCurrentPage();
     }
@@ -15,7 +15,7 @@ class RouterService {
 
     getNextPage(string: TPagesPathnames): IComponentResult {
         this.currentPage = routes[string];
-        return routes[string];
+        return routes[string]();
     }
 
     handleAnchorElementNavigation() {
