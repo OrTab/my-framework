@@ -20,8 +20,18 @@ class RouterService {
 
     handleAnchorElementNavigation() {
         document.querySelectorAll('a').forEach(el => {
-            el.addEventListener('click', ev => {
-                ev.preventDefault();
+            if ('outer' in el.attributes) {
+                return;
+            }
+
+            el.addEventListener('click', event => {
+                event.preventDefault();
+                if (event.metaKey || event.ctrlKey) {
+                    const newWindow = window.open()!;
+                    newWindow.opener = null;
+                    newWindow.location = el.href;
+                    return;
+                }
                 history.pushState(null, '', el.href);
                 renderApp(this.getNextPage(el.pathname as TPagesPathnames));
             });

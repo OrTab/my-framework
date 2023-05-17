@@ -1,10 +1,11 @@
-import { goTo } from '../../router/link';
 import { IComponentResult } from '../../utilTypes';
 
 export const Home: IComponentResult = {
     render() {
         return `<div class="home">
                     <h2>hey its the Home</h2>
+                    <a outer href="https://www.google.com">Google</a>
+                    <a href="/board">Board</a>
                 </div>`;
     },
     listeners: [
@@ -12,7 +13,7 @@ export const Home: IComponentResult = {
             eventType: 'click',
             selector: '.home',
             listener() {
-                goTo('/board');
+                // goTo('/board');
             }
         }
     ]
