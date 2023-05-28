@@ -26,6 +26,6 @@ export const state = <S>(
     return [currentState, setState];
 };
 
-export const handleState = (cmp: Component) => {
+export const removeComponentState = (cmp: Component) => {
     map.delete(cmp);
 };
