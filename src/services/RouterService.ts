@@ -1,4 +1,5 @@
 import { renderApp } from '../app';
+import { handleState } from '../myState/state';
 import { routes } from '../router/appRoutes';
 import { Component, IComponentResult, TPagesPathnames } from '../utilTypes';
 
@@ -32,6 +33,9 @@ class RouterService {
                     newWindow.location = el.href;
                     return;
                 }
+                const currentPage =
+                    routes[window.location.pathname as TPagesPathnames];
+                handleState(currentPage);
                 history.pushState(null, '', el.href);
                 renderApp(this.getNextPage(el.pathname as TPagesPathnames));
             });

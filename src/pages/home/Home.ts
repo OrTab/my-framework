@@ -1,6 +1,6 @@
-import { IComponentResult } from '../../utilTypes';
+import { Component } from '../../utilTypes';
 
-export const Home = (): IComponentResult => {
+export const Home: Component = () => {
     return {
         render() {
             return `<div class="home">

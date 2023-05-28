@@ -9,6 +9,5 @@ export function renderApp({ listeners, render }: IComponentResult) {
                   ${render()}
                 </div>
 `;
-    document.querySelector<HTMLDivElement>('#app')!.innerHTML = app;
-    listeners && DomService.addListeners(listeners);
+    DomService.render('#app', app, listeners);
 }

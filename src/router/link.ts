@@ -1,6 +1,8 @@
 import { renderApp } from '../app';
+import { handleState } from '../myState/state';
 import RouterService from '../services/RouterService';
 import { TPagesPathnames } from '../utilTypes';
+import { routes } from './appRoutes';
 
 export const goTo = (
     pathTarget: TPagesPathnames,
@@ -9,6 +11,8 @@ export const goTo = (
     },
     hash: string = ''
 ) => {
+    const currentPage = routes[window.location.pathname as TPagesPathnames];
+    handleState(currentPage);
     const searchParams = new URLSearchParams(queryParams).toString();
     const url =
         location.origin +
